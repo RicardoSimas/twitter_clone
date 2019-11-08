@@ -30,7 +30,7 @@
 	        
 	        <div id="navbar" class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav navbar-right">
-	            <li><a href="index.php">Voltar para Home</a></li>
+	            <li><a href="index.php">Home</a></li>
 	          </ul>
 	        </div><!--/.nav-collapse -->
 	      </div>
@@ -43,9 +43,9 @@
 
 	    	<div class="col-md-4"></div>
 	    	<div class="col-md-4">
-	    		<h3>Inscreva-se já.</h3>
+	    		<h3>Criar sua conta</h3>
 	    		<br />
-				<form method="post" action="" id="formCadastrarse">
+				<form method="post" action="cadastra-usuario.php" id="formCadastrarse">
 					<div class="form-group">
 						<input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuário" required="requiored">
 					</div>
