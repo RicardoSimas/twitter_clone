@@ -1,6 +1,6 @@
 <?php
 
-    require_once['db-connect.php'];
+    require_once('db-connect.php');
 
     $usuario = $_POST['usuario'];
     $email = $_POST['email'];
@@ -8,15 +8,15 @@
 
     $objDb = new db();
 
-    $link = db->conectBd();
+    $link = $objDb->conectBd();
 
-    $sql = "INSERT INTO usuarios('usuario', 'email', 'senha') VALUES ('$usuario, $email, $senha')";
+    $sql = "INSERT INTO usuarios(usuario, senha, email) VALUES ('$usuario', '$senha', '$email')";
     
     //Verifica se a query possui erro de sintaxe e executa a instrução.
     if(mysqli_query($link, $sql)){
-        echo 'Registro Inserido com sucesso!'
+        echo 'Registro Inserido com sucesso!';
     }else{
-        echo 'Erro!'
+        echo 'Erro!';
     }
 
 ?>
