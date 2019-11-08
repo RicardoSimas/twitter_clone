@@ -1,8 +1,6 @@
 <?php
 class db{
-
-
-
+    
     //Informações de conexão com o BD mysql;
     private $host = 'localhost';
     private $user = 'root';
@@ -12,8 +10,6 @@ class db{
     public function conectBd(){
         // Criando conexão com o BD;
         $con = mysqli_connect($this->$host, $this->$user, $this->$password, $this->$database);
-
-        $sql = "INSERT INTO usuarios('usuario', 'email', 'senha') VALUES ('$user, $email, $password')" ;
 
         //Ajustando o charset;
         mysqli_set_charset($con, 'utf-8');
