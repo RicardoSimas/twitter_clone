@@ -4,7 +4,7 @@
 
     $usuario = $_POST['usuario'];
     $email = $_POST['email'];
-    $senha = $_POST['senha'];
+    $senha = md5($_POST['senha']);
 
     $objDb = new db();
 
@@ -15,6 +15,8 @@
     //Verifica se a query possui erro de sintaxe e executa a instrução.
     if(mysqli_query($link, $sql)){
         echo 'Registro Inserido com sucesso!';
+
+        header('location: index.php');
     }else{
         echo 'Erro!';
     }

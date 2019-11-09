@@ -4,7 +4,7 @@
     require_once('db-connect.php');
 
     $usuario = $_POST['usuario'];
-    $senha = $_POST['senha'];
+    $senha = md5($_POST['senha']);
 
     $objDb = new db();
 
