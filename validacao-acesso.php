@@ -1,4 +1,5 @@
 <?php
+    session_start();
 
     require_once('db-connect.php');
 
@@ -19,7 +20,11 @@
         $dadosUsuario = mysqli_fetch_array($resource);
 
         if(isset($dadosUsuario['usuario'])){
-            echo 'Usuário Existente!';
+
+            $_SESSION['usuario'] = $dadosUsuario['usuario'];
+            
+            header('location: home.php');
+
         }else{
             header('location: index.php?erro=1');
         }
