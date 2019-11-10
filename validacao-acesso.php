@@ -10,7 +10,7 @@
 
     $link = $objDb->conectBd();
 
-    $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario' AND senha = '$senha' ";
+    $sql = "SELECT id, usuario FROM usuarios WHERE usuario = '$usuario' AND senha = '$senha' ";
 
     $resource = mysqli_query($link, $sql);
     
@@ -22,6 +22,7 @@
         if(isset($dadosUsuario['usuario'])){
 
             $_SESSION['usuario'] = $dadosUsuario['usuario'];
+            $_SESSION['id'] = $dadosUsuario['id'];
             
             header('location: home.php');
 

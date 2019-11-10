@@ -3,8 +3,7 @@
 
     if(!isset($_SESSION['usuario'])){
         header('location: index.php?erro=1');
-    }
-
+	}
 ?>
 
 <!DOCTYPE HTML>
@@ -19,6 +18,26 @@
 
 		<!-- bootstrap - link cdn -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+		<script type="text/javascript">
+			$(document).ready( function(){
+				$('#btn_tweet').click( function(){
+					$tweet = $('#text_tweet').val();
+
+					if($tweet.length > 0){
+						$.ajax({
+							url: 'insert-tweet.php',
+							method: 'post',
+							data: $('#form_tweet').serialize(), /* Função que captura os dados de um form e transforma em json dinamicamente*/
+							success: function(data){
+								$('#text_tweet').val('');
+								alert('Tweet incluído com sucesso!');
+							}
+						});
+					}
+				});
+			});
+		</script
 	
 	</head>
 
@@ -72,12 +91,12 @@
 	    	<div class="col-md-6">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="O que está acontecendo agora?" maxlength="140">
+						<form id="form_tweet" class="input-group">
+							<input type="text" id="text_tweet" name="text_tweet" class="form-control" placeholder="O que está acontecendo agora?" maxlength="140">
 							<span class="input-group-btn">
-								<button type="button" class="btn btn-default">Tweet</button>
+								<button type="button" id="btn_tweet" class="btn btn-default">Tweet</button>
 							</span>
-						</div>
+						</form>
 					</div>
 				</div>
 			</div>
