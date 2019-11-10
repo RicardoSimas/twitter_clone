@@ -34,7 +34,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <img src="imagens/icone_twitter.png" />
+	          <img style="margin-top:4px" src="imagens/icone_twitter.png" />
 	        </div>
 	        
 	        <div id="navbar" class="navbar-collapse collapse">
@@ -48,20 +48,47 @@
 
 	    <div class="container">
 	    	
-	    	<br /><br />
+	    	<br /> <br />
 
-	    	<div class="col-md-4"></div>
-	    	<div class="col-md-4">
-	    		<h3>Seja bem vindo(a) a sua sessão!</h3>
-	    		
+			<div class="col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h4><?= $_SESSION['usuario']; ?></h4>
+						
+						<hr />
+
+						<div class="col-md-6">
+							Tweets: 1
+						</div>
+
+						<div class="col-md-6">
+							Subscribe: 1
+						</div>
+					</div>
+
+				</div>
 			</div>
-			<div class="col-md-4"></div>
 
-			<div class="clearfix"></div>
-			<br />
-			<div class="col-md-4"></div>
-			<div class="col-md-4"></div>
-			<div class="col-md-4"></div>
+	    	<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="O que está acontecendo agora?" maxlength="140">
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-default">Tweet</button>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h4><a href="#">Search</a></h4>
+					</div>
+				</div>
+			</div>
 
 		</div>
 
