@@ -31,19 +31,28 @@
 							data: $('#form_tweet').serialize(), /* Função que captura os dados de um form e transforma em json dinamicamente*/
 							success: function(data){
 								$('#text_tweet').val('');
-								alert('Tweet incluído com sucesso!');
+								updateTweet();
 							}
 						});
 					}
 				});
+
+				function updateTweet(){
+					$.ajax({
+						url: 'get_tweet.php',
+						success: function(data){
+							$('#timeline_tweet').html(data); //html do jquery é o mesmo que innerHTML do js.
+						}					
+					});
+				}
+
+				updateTweet();
 			});
 		</script
 	
 	</head>
 
 	<body>
-
-		<!-- Static navbar -->
 	    <nav class="navbar navbar-default navbar-static-top">
 	      <div class="container">
 	        <div class="navbar-header">
@@ -64,11 +73,8 @@
 	      </div>
 	    </nav>
 
-
 	    <div class="container">
 	    	
-	    	<br /> <br />
-
 			<div class="col-md-3">
 				<div class="panel panel-default">
 					<div class="panel-body">
@@ -99,6 +105,11 @@
 						</form>
 					</div>
 				</div>
+
+				<div id="timeline_tweet" class="list-group">
+
+				</div>
+
 			</div>
 
 			<div class="col-md-3">
