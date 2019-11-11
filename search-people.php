@@ -21,33 +21,23 @@
 
 		<script type="text/javascript">
 			$(document).ready( function(){
-				$('#btn_tweet').click( function(){
-					$tweet = $('#text_tweet').val();
+				$('#btn_search').click( function(){
+					$name_people = $('#name_people').val();
 
-					if($tweet.length > 0){
+					if($name_people.length > 0){
 						$.ajax({
-							url: 'insert-tweet.php',
+							url: 'get_people.php',
 							method: 'post',
-							data: $('#form_tweet').serialize(), /* Função que captura os dados de um form e transforma em json dinamicamente*/
+							data: $('#form_search_people').serialize(), /* Função que captura os dados de um form e transforma em json dinamicamente*/
 							success: function(data){
-								$('#text_tweet').val('');
-								updateTweet();
+                                $('#name_people').val('');
+                                $('#search_people').html(data);
 							}
 						});
 					}
 				});
-
-				function updateTweet(){
-					$.ajax({
-						url: 'get_tweet.php',
-						success: function(data){
-							$('#timeline_tweet').html(data); //html do jquery é o mesmo que innerHTML do js.
-						}					
-					});
-				}
-
-				updateTweet();
-			});
+            });
+            
 		</script
 	
 	</head>
@@ -67,6 +57,7 @@
 	        
 	        <div id="navbar" class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav navbar-right">
+              <li><a href="home.php">Home</a></li>
 	            <li><a href="exit-session.php">Sair</a></li>
 	          </ul>
 	        </div><!--/.nav-collapse -->
@@ -97,16 +88,16 @@
 	    	<div class="col-md-6">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<form id="form_tweet" class="input-group">
-							<input type="text" id="text_tweet" name="text_tweet" class="form-control" placeholder="O que está acontecendo agora?" maxlength="140">
+						<form id="form_search_people" class="input-group">
+							<input type="text" id="name_people" name="name_people" class="form-control" placeholder="Quem você está procurando?" maxlength="140">
 							<span class="input-group-btn">
-								<button type="button" id="btn_tweet" class="btn btn-default">Tweet</button>
+								<button type="button" id="btn_search" class="btn btn-default">Search</button>
 							</span>
 						</form>
 					</div>
 				</div>
 
-				<div id="timeline_tweet" class="list-group">
+				<div id="search_people" class="list-group">
 
 				</div>
 
@@ -115,7 +106,7 @@
 			<div class="col-md-3">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<h4><a href="search-people.php">Search</a></h4>
+						<h4><a href="#"></a></h4>
 					</div>
 				</div>
 			</div>

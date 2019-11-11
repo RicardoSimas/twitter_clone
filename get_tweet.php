@@ -24,7 +24,7 @@
         while($dados_tweet = mysqli_fetch_array($resource, MYSQLI_ASSOC)){
 
             echo '<a href="#" class="list-group-item">';
-                echo '<h4 class="list-group-item-heading"> '. $dados_tweet['usuario'].' <small> '. $dados_tweet['data_tweet'] .' </small></h4>';
+                echo '<h4 class="list-group-item-heading"> '. $dados_tweet['usuario'].' <small> - '. $dados_tweet['data_tweet'] .' </small></h4>';
                 echo '<p>'. $dados_tweet['tweet'] .'</p>';               
             echo '</a>';
 
