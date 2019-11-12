@@ -30,15 +30,31 @@
 							method: 'post',
 							data: $('#form_search_people').serialize(), /* Função que captura os dados de um form e transforma em json dinamicamente*/
 							success: function(data){
-                                $('#name_people').val('');
-                                $('#search_people').html(data);
+								$('#search_people').html(data);
+
+								$('.btn-follow').click( function(){
+									var id_usuario = $(this).data('id_usuario');
+
+									$.ajax({
+										url: 'follow.php',
+										method: 'post',
+										data: {id_user_seguidores : id_usuario},
+										success: function(data){
+											alert('Seguindo!');
+										}
+									});
+								});
+
+								
 							}
 						});
 					}
+				
+					
 				});
             });
             
-		</script
+		</script>
 	
 	</head>
 

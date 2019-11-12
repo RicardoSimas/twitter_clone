@@ -48,7 +48,7 @@
 
 				updateTweet();
 			});
-		</script
+		</script>
 	
 	</head>
 

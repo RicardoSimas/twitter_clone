@@ -21,10 +21,16 @@
         while($dados_usuario = mysqli_fetch_array($resource, MYSQLI_ASSOC)){
 
             echo '<a href="#" class="list-group-item">';
-               echo '<strong> '.$dados_usuario['usuario'].' </strong> <small> - '.$dados_usuario['email'].' </small>';        
+               echo '<strong> '.$dados_usuario['usuario'].' </strong> <small> - '.$dados_usuario['email'].' </small>';  
+               
+               echo '<p class="list-group-item-text pull-right">';
+                    echo '<button type="button" class="btn-follow btn btn-default btn-xs" data-id_usuario="'.$dados_usuario['id'].'">Seguir</button>';
+               echo '</p>';
+               echo '<div class="clearfix"></div>';      
             echo '</a>';
+          
 
-            echo '<br/>';
+            echo '<br />';
         }
     }else{
         echo 'Erro ao executar a query!';
