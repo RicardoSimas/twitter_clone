@@ -14,7 +14,11 @@
     $objDb = new Db();
     $link = $objDb->conectBd();
    
-    $sql = " SELECT * FROM usuarios WHERE usuario like '%$people_name%' AND id != '$id_usuario' ";
+    $sql = " SELECT * FROM usuarios as u ";
+    $sql.= " LEFT JOIN usuarios_seguidores as us ON (us.id_usuario = $id_usuario AND u.id = us.id_usuario_seguido) ";
+    $sql.= " WHERE usuario LIKE '%$people_name%' AND u.id <> $id_usuario;" ;
+
+
     $resource = mysqli_query($link, $sql);
         
     if($resource){
@@ -24,7 +28,20 @@
                echo '<strong> '.$dados_usuario['usuario'].' </strong> <small> - '.$dados_usuario['email'].' </small>';  
                
                echo '<p class="list-group-item-text pull-right">';
-                    echo '<button type="button" class="btn-follow btn btn-default btn-xs" data-id_usuario_seguido="'.$dados_usuario['id'].'">Seguir</button>';
+
+                    $follow_user_sn = isset($dados_usuario['id_user_seguidores']) && !empty($dados_usuario['id_user_seguidores']) ? 'S' : 'N';
+                    $btn_follow_display = 'block';
+                    $btn_unfollow_display = 'block';
+
+                    if($follow_user_sn == 'N'){
+                        $btn_unfollow_display = 'none';
+                    }else{
+                        $btn_follow_display = 'none';
+                    }
+
+                    echo '<button type="button" id="btn_follow_'.$dados_usuario['id'].'" style="display: '.$btn_follow_display.'" class="btn-follow btn btn-default btn-xs" data-id_usuario_seguido="'.$dados_usuario['id'].'">Follow</button>';
+                    echo '<button type="button" id="btn_unfollow_'.$dados_usuario['id'].'" style="display: '.$btn_unfollow_display.'" class="btn-unfollow btn btn-primary btn-xs" data-id_usuario_seguido="'.$dados_usuario['id'].'">Unfollow</button>';
+
                echo '</p>';
                echo '<div class="clearfix"></div>';      
             echo '</a>';

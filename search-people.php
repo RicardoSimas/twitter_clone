@@ -35,6 +35,9 @@
 								$('.btn-follow').click( function(){
 									var id_usuario_seguido = $(this).data('id_usuario_seguido');
 
+									$('#btn_follow_' + id_usuario_seguido).hide();
+									$('#btn_unfollow_' + id_usuario_seguido).show();
+
 									$.ajax({
 										url: 'follow.php',
 										method: 'post',
@@ -45,12 +48,25 @@
 									});
 								});
 
-								
+								$('.btn-unfollow').click( function(){
+									var id_usuario_unfollow = $(this).data('id_usuario_seguido');
+
+									$('#btn_follow_' + id_usuario_unfollow).show();
+									$('#btn_unfollow_' + id_usuario_unfollow).hide();
+
+									$.ajax({
+										url: 'unfollow.php',
+										method: 'post',
+										data: {id_usuario_unfollow : id_usuario_unfollow},
+										success: function(data){
+											alert('Deixando de Seguir!');
+										}
+									});
+								});
 							}
 						});
 					}
 				
-					
 				});
             });
             
