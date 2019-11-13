@@ -1,9 +1,55 @@
 <?php
-    session_start();
+	session_start();
+	
+	require_once('db-connect.php');
 
     if(!isset($_SESSION['usuario'])){
         header('location: index.php?erro=1');
 	}
+
+	$id_usuario = $_SESSION['id'];
+
+	$objDb = new db();
+
+	$link = $objDb->conectBd();
+
+	//----- Quantidade de Tweets ------
+	$sql = "SELECT COUNT(*) as qtd_tweets FROM Tweets WHERE id_usuario = $id_usuario ";
+
+	$resource = mysqli_query($link, $sql);
+
+	$qtd_tweets = 0;
+    
+    //Verificação de erro de sintaxe da consulta.
+    if($resource){
+        //Retorna em formato de array o registro recuperado do BD.
+		$dadosUsuario = mysqli_fetch_array($resource, MYSQLI_ASSOC);
+		
+		$qtd_tweets = $dadosUsuario['qtd_tweets'];
+
+    }else{
+        echo 'Erro na execução da consulta!';
+	}
+	
+	//----- Quantidade de Seguidores -----
+	$sql = "SELECT COUNT(*) as qtd_followers FROM usuarios_seguidores WHERE id_usuario_seguido = $id_usuario ";
+
+	$resource = mysqli_query($link, $sql);
+
+	$qtd_followers = 0;
+    
+    //Verificação de erro de sintaxe da consulta.
+    if($resource){
+        //Retorna em formato de array o registro recuperado do BD.
+		$dadosUsuario = mysqli_fetch_array($resource, MYSQLI_ASSOC);
+		
+		$qtd_followers = $dadosUsuario['qtd_followers'];
+
+    }else{
+        echo 'Erro na execução da consulta!';
+    }
+
+	
 ?>
 
 <!DOCTYPE HTML>
@@ -83,11 +129,11 @@
 						<hr />
 
 						<div class="col-md-6">
-							Tweets: 1
+							Tweets: <?=$qtd_tweets?>
 						</div>
 
 						<div class="col-md-6">
-							Subscribe: 1
+							Subscribe: <?=$qtd_followers?>
 						</div>
 					</div>
 
