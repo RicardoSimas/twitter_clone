@@ -33,12 +33,12 @@
 								$('#search_people').html(data);
 
 								$('.btn-follow').click( function(){
-									var id_usuario = $(this).data('id_usuario');
+									var id_usuario_seguido = $(this).data('id_usuario_seguido');
 
 									$.ajax({
 										url: 'follow.php',
 										method: 'post',
-										data: {id_user_seguidores : id_usuario},
+										data: {id_usuario_seguido : id_usuario_seguido},
 										success: function(data){
 											alert('Seguindo!');
 										}

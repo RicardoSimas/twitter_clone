@@ -24,7 +24,7 @@
                echo '<strong> '.$dados_usuario['usuario'].' </strong> <small> - '.$dados_usuario['email'].' </small>';  
                
                echo '<p class="list-group-item-text pull-right">';
-                    echo '<button type="button" class="btn-follow btn btn-default btn-xs" data-id_usuario="'.$dados_usuario['id'].'">Seguir</button>';
+                    echo '<button type="button" class="btn-follow btn btn-default btn-xs" data-id_usuario_seguido="'.$dados_usuario['id'].'">Seguir</button>';
                echo '</p>';
                echo '<div class="clearfix"></div>';      
             echo '</a>';

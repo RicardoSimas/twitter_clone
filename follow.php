@@ -9,9 +9,9 @@
     require_once('db-connect.php');
 
     $id_usuario = $_SESSION['id'];
-    $id_user_seguidores = $_POST['id_user_seguidores'];
+    $id_usuario_seguido = $_POST['id_usuario_seguido'];
 
-    if($id_usuario == '' || $id_user_seguidores == ''){ 
+    if($id_usuario == '' || $id_usuario_seguido == ''){ 
         die();
     }
 
@@ -19,7 +19,7 @@
     
     $link = $objDb->conectBd();
 
-    $sql = "INSERT INTO usuarios_seguidores(id_usuario, id_user_seguidores) VALUES($id_usuario, $id_user_seguidores)";
+    $sql = "INSERT INTO usuarios_seguidores(id_usuario, id_usuario_seguido) VALUES($id_usuario, $id_usuario_seguido)";
 
     mysqli_query($link, $sql);
 
