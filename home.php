@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	
-	require_once('db-connect.php');
+	require_once('db_connect.php');
 
     if(!isset($_SESSION['usuario'])){
         header('location: index.php?erro=1');
@@ -47,8 +47,7 @@
 
     }else{
         echo 'Erro na execução da consulta!';
-    }
-
+	}
 	
 ?>
 
@@ -72,7 +71,7 @@
 
 					if($tweet.length > 0){
 						$.ajax({
-							url: 'insert-tweet.php',
+							url: 'insert_tweet.php',
 							method: 'post',
 							data: $('#form_tweet').serialize(), /* Função que captura os dados de um form e transforma em json dinamicamente*/
 							success: function(data){
@@ -93,7 +92,28 @@
 				}
 
 				updateTweet();
+				
+				$.ajax({
+					url: 'get_tweet.php',
+					method: 'post',
+					success: function(data){ 
+						$('.btn_del').click( function(){
+							
+							var id_tweet = $(this).data('id_usuario');
+
+							alert(data);
+							
+							/*$.ajax({
+								url: 'delete_tweet.php',
+								method: 'post',
+								data: {id_tweet : id_usuario_seguido},
+								success: function(data){}
+							});*/
+						});
+					}
+				});
 			});
+
 		</script>
 	
 	</head>
@@ -113,7 +133,7 @@
 	        
 	        <div id="navbar" class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav navbar-right">
-	            <li><a href="exit-session.php">Sair</a></li>
+	            <li><a href="exit_session.php">Sair</a></li>
 	          </ul>
 	        </div><!--/.nav-collapse -->
 	      </div>
@@ -128,8 +148,8 @@
 						
 						<hr />
 
-						<div class="col-md-6">
-							Tweets: <?=$qtd_tweets?>
+						<div class="col-md-6" >
+							<div id="timeline_tweet_count">Tweets: </div>
 						</div>
 
 						<div class="col-md-6">
@@ -161,7 +181,7 @@
 			<div class="col-md-3">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<h4><a href="search-people.php">Search</a></h4>
+						<h4><a href="search_people.php">Search</a></h4>
 					</div>
 				</div>
 			</div>

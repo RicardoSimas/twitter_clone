@@ -6,7 +6,7 @@
         header('location: index.php?erro=1');
     }
    
-    require_once('db-connect.php');
+    require_once('db_connect.php');
     
     $people_name = $_POST['name_people'];
     $id_usuario = $_SESSION['id'];

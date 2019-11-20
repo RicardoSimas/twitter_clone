@@ -6,7 +6,7 @@
         header('location: index.php?erro=1');
 	}
 
-    require_once('db-connect.php');
+    require_once('db_connect.php');
 
     $tweet = $_POST['text_tweet'];
     $id_usuario = $_SESSION['id'];

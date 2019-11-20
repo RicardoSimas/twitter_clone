@@ -6,7 +6,7 @@
         header('location: index.php?erro=1');
 	}
 
-    require_once('db-connect.php');
+    require_once('db_connect.php');
 
     $id_usuario = $_SESSION['id'];
     $id_usuario_unfollow = $_POST['id_usuario_unfollow'];

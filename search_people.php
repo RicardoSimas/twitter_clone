@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	
-	require_once('db-connect.php');
+	require_once('db_connect.php');
 
     if(!isset($_SESSION['usuario'])){
         header('location: index.php?erro=1');
@@ -86,10 +86,9 @@
 										url: 'follow.php',
 										method: 'post',
 										data: {id_usuario_seguido : id_usuario_seguido},
-										success: function(data){
-											alert('Seguindo!');
-										}
+										success: function(data){}
 									});
+									
 								});
 
 								$('.btn-unfollow').click( function(){
@@ -102,9 +101,7 @@
 										url: 'unfollow.php',
 										method: 'post',
 										data: {id_usuario_unfollow : id_usuario_unfollow},
-										success: function(data){
-											alert('Deixando de Seguir!');
-										}
+										success: function(data){}
 									});
 								});
 							}
@@ -134,7 +131,7 @@
 	        <div id="navbar" class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav navbar-right">
               <li><a href="home.php">Home</a></li>
-	            <li><a href="exit-session.php">Sair</a></li>
+	            <li><a href="exit_session.php">Sair</a></li>
 	          </ul>
 	        </div><!--/.nav-collapse -->
 	      </div>
